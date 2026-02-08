@@ -106,6 +106,27 @@ defmodule CreatorPulseWeb do
   end
 
   @doc """
+  Format a number with thousands separators.
+  """
+  def format_number(nil), do: "0"
+  def format_number(number) when is_integer(number) do
+    number
+    |> Integer.to_string()
+    |> String.reverse()
+    |> String.graphemes()
+    |> Enum.chunk_every(3)
+    |> Enum.join(",")
+    |> String.reverse()
+  end
+  def format_number(number) when is_binary(number) do
+    case Integer.parse(number) do
+      {int, _} -> format_number(int)
+      :error -> "0"
+    end
+  end
+  def format_number(_), do: "0"
+
+  @doc """
   When used, dispatch to the appropriate controller/live_view/etc.
   """
   defmacro __using__(which) when is_atom(which) do

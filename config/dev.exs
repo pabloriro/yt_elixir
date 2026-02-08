@@ -25,10 +25,8 @@ config :creator_pulse, CreatorPulseWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "xVvl2MBzKibk9PxcKE4OnHhU2PulNUKq8Dh5QuD30zprf9Py//MGb47ZzyQCwl/I",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:creator_pulse, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:creator_pulse, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:creator_pulse, ~w(--sourcemap=inline --watch)]}
   ]
-
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

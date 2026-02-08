@@ -88,24 +88,6 @@ defmodule CreatorPulseWeb.ChannelLive.Form do
         {:noreply, assign(socket, form: to_form(changeset))}
     end
   end
-  @impl true
-  def handle_event("fetch_youtube", %{"youtube_id" => id}, socket) do
-    case CreatorPulse.YoutubeAPI.get_channel_info(id) do
-      {:ok, info} ->
-        # Obtenemos el canal que se está editando o creando
-        channel = socket.assigns.channel
-        
-        # Creamos el changeset con los nuevos datos de la API
-        changeset = CreatorPulse.Analytics.change_channel(channel, info)
-        
-        # Actualizamos el socket para que el formulario se rellene solo
-        {:noreply, assign(socket, form: to_form(changeset))}
-
-      {:error, _reason} ->
-        # Si falla, mostramos un error rápido
-        {:noreply, put_flash(socket, :error, "No se encontró el canal de YouTube")}
-    end
-  end
   defp save_channel(socket, :new, channel_params) do
     case Analytics.create_channel(channel_params) do
       {:ok, channel} ->

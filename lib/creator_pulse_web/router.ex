@@ -22,6 +22,8 @@ defmodule CreatorPulseWeb.Router do
     live "/channels/:id/edit", ChannelLive.Index, :edit
     live "/channels/:id", ChannelLive.Show, :show
     live "/channels/:id/show/edit", ChannelLive.Show, :edit
+    live "/channels/:channel_id/videos", VideoLive.Index, :index
+    live "/channels/:channel_id/videos/:id", VideoLive.Show, :show
   end
 
   # Other scopes may use custom stacks.

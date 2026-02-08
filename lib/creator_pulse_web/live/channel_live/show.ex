@@ -14,6 +14,9 @@ defmodule CreatorPulseWeb.ChannelLive.Show do
           <.button navigate={~p"/channels"}>
             <.icon name="hero-arrow-left" />
           </.button>
+          <.button navigate={~p"/channels/#{@channel}/videos"}>
+            <.icon name="hero-video-camera" /> Videos
+          </.button>
           <.button variant="primary" navigate={~p"/channels/#{@channel}/edit?return_to=show"}>
             <.icon name="hero-pencil-square" /> Edit channel
           </.button>
