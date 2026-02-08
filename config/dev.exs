@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :creator_pulse, CreatorPulse.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "pabloriquelme",
+  password: "",
   hostname: "localhost",
   database: "creator_pulse_dev",
   stacktrace: true,

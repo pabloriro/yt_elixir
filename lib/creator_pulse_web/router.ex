@@ -16,8 +16,12 @@ defmodule CreatorPulseWeb.Router do
 
   scope "/", CreatorPulseWeb do
     pipe_through :browser
-
     get "/", PageController, :home
+    live "/channels", ChannelLive.Index, :index
+    live "/channels/new", ChannelLive.Index, :new
+    live "/channels/:id/edit", ChannelLive.Index, :edit
+    live "/channels/:id", ChannelLive.Show, :show
+    live "/channels/:id/show/edit", ChannelLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
